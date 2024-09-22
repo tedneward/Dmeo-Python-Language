@@ -34,6 +34,23 @@ print(f"args for add5: {add5.args}")
 print(f"keywords for add5: {add5.keywords}")
 # {{## END partial ##}}
 
+# {{## BEGIN partialmethod ##}}
+from functools import partialmethod
+class Cell:
+    def __init__(self): self._alive = False
+    @property 
+    def alive(self): return self._alive
+    def set_state(self, state): self._alive = bool(state)
+
+    set_alive = partialmethod(set_state, True)
+    set_dead = partialmethod(set_state, False)
+
+c = Cell()
+c.alive # prints False
+c.set_alive()   # partial around set_state, above
+c.alive # prints True
+# {{## END partialmethod ##}}
+
 # {{## BEGIN memoized ##}}
 @functools.cache
 def factorial(n):
