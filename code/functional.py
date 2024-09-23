@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 import functools
 
-# {{## BEGIN  ##}}
-# {{## END  ##}}
+# {{## BEGIN unused ##}}
+# {{## END unused ##}}
 
 # {{## BEGIN values ##}}
 sayit = print
@@ -64,3 +64,43 @@ factorial(5)       # just looks up cached value result
 print("factorial(12)")
 factorial(12)
 # {{## END memoized ##}}
+
+# {{## BEGIN total_ordering ##}}
+from functools import total_ordering
+
+@total_ordering
+class Car():
+    def __init__(self, year, make, model): 
+        self.year, self.make, self.model = year, make, model
+
+    def __eq__(self, o):
+        if not isinstance(o, Car):
+            return NotImplemented
+        return ((self.year, self.make, self.model) == (o.year, o.make, o.model))
+    
+    def __lt__(self, o):
+        if not isinstance(o, Car):
+            return NotImplemented
+        return ((self.year, self.make, self.model) < (o.year, o.make, o.model))
+car1 = Car(2020, 'BMW', '530i')
+car2 = Car(2020, 'BMW', '330i')
+(car1 < car2), (car1 > car2) # (False, True)
+# {{## END total_ordering ##}}
+
+# {{## BEGIN generators ##}}
+def generate_ints(N):
+    for i in range(N):
+        yield i
+
+def generate_odds(N):
+    start = 1
+    while True:
+        yield start
+        start += 2
+
+def is_even(x): return (x % 2) == 0
+evens = list(filter(is_even, range(10)))
+def is_odd(x): return (x % 2) != 0
+odds = list(filter(is_odd, range(10)))
+# {{## END generators ##}}
+
