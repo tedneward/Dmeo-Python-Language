@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # Python functions
 
 # {{## BEGIN  ##}}
@@ -15,9 +17,21 @@ def sayHowdy():
     return "I said howdy"
 
 response = sayHowdy()
-print(response)           # "I said howdy"
-print(sayHowdy.__doc__)   # "This function says..."
+print(response)             # "I said howdy"
+print(sayHowdy.__doc__)     # "This function says..."
 # {{## END definition ##}}
+
+# {{## BEGIN typed_definition ##}}
+def add(lhs : int, rhs : int) -> int:
+    return lhs + rhs
+def concat(str1 : str, str2 : str) -> str:
+    return str1 + str2
+
+print(add(2, 3))            # 5
+print(add('1', '2'))        # 12
+print(concat(1, 2))         # 3
+print(concat('1', '2'))     # 12
+# {{## END typed_definition ##}}
 
 # {{## BEGIN default-args ##}}
 def sayGoodMorning(language="english"):

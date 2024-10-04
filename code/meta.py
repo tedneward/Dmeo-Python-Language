@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # Python meta-object protocol examples
 
 # {{## BEGIN dynamic ##}}
