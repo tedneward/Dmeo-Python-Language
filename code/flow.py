@@ -113,3 +113,9 @@ op = input()
 right = int(input())
 print(calculator[op](left, right))
 ## {{## END switchdict ##}}
+
+## {{## BEGIN with ##}}
+with open("data.dat", "w") as datafile:
+    datafile.write("Pretend this is data")
+# datafile is implicitly close()d after the above block completes
+## {{## END with}}
