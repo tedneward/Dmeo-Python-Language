@@ -63,24 +63,24 @@ output = 'Name: {user.name}, Age: {user.age}'.format(user=user)
 ## {{## BEGIN lists ##}}
 list1 = [1, 2, 3, 4, 5]
 list2 = [1, "two", 3.0]
-list3 = list1 + list2
-firstlistelement = list1[0]
-print(firstlistelement)
-lastlistelement = list1[-1]
-print(lastlistelement)
+list3 = list1 + list2       # [1, 2, 3, 4, 5, 1, "two", 3.0]
+firstlistelement = list1[0] # 1
+lastlistelement = list1[-1] # 5
 ## {{## END lists ##}}
-
+print(list3)
+print(firstlistelement)     # "1"
+print(lastlistelement)      # "5"
 
 ## {{## BEGIN sets ##}}
 set1 = {1, 2, 3, 4, 5}
 set2 = {1, 1, 2, 2, 3, 3, 4, 4}
-print(set2)
+print(set2)                 # "{1, 2, 3, 4}"
 
 set3 = {2, 4, 6}
 set4 = {1, 4, 9, 16}
-print(set1 & set2)
-print(set1 - set2)
-print(set1 | set3)
+print(set3 & set4)          # "{4}" 
+print(set3 - set4)          # "{2, 6}"
+print(set3 | set4)          # "{16, 1, 2, 4, 6, 9}"
 ## {{## END sets ##}}
 
 ## {{## BEGIN dicts ##}}

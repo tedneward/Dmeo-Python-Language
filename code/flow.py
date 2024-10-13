@@ -28,9 +28,8 @@ match status:
         http_message = "Something's wrong with the internet"
 ## {{## END match ##}}
 
-point = (0, 0)
 ## {{## BEGIN tuple-match ##}}
-# point is tuple
+point = (0, 0)
 match point:
     case (0, 0):
         print("Origin")
@@ -108,11 +107,37 @@ for n in names():
 import operator as op
 calculator = { '+': op.add, '-': op.sub, '*': op.mul, '/': op.truediv }
 
-left = int(input())
-op = input()
-right = int(input())
+left = 12  # int(input())
+op = '+'   # input()
+right = 12 # int(input())
 print(calculator[op](left, right))
 ## {{## END switchdict ##}}
+
+## {{## BEGIN match-by-hand ##}}
+def match_fn(candidate, functions):
+    for fn in functions.keys():
+        if fn(candidate):
+            return functions[fn](candidate)
+    return None
+
+def match_origin(cand):
+    if cand == (0,0): return True 
+    else: return False
+def match_zero_x(cand):
+    if cand[0] == 0: return True
+    else: return False
+def match_zero_y(cand):
+    if cand[1] == 0: return True
+    else: return False
+
+match_result = match_fn(point, {
+    match_origin : lambda cand: print("Origin"),
+    match_zero_x : lambda cand: print(f"Y={cand[1]}"),
+    match_zero_y : lambda cand: print(f"X={cand[0]}")
+})
+print(match_result)
+## {{## END match-by-hand ##}}
+
 
 ## {{## BEGIN with ##}}
 with open("data.dat", "w") as datafile:
