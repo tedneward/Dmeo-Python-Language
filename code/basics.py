@@ -10,6 +10,10 @@ x,y = 0,0
 #uninitialized_variable  # error!
 ## {{## END variables ##}}
 
+## {{## BEGIN walrus ##}}
+assignment = (truth := True)
+print(assignment)
+## {{## END walrus ##}}
 
 ## {{## BEGIN tuples ##}}
 ted = "Ted", "Neward", 46
